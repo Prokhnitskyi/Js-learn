@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li class="listItem">
+			<p class="para">Lorem ipsum dolor.</p>
+		</li>
+		<li class="listItem">
+			<p class="para">Lorem ipsum dolor.</p>
+		</li>
+		<li class="listItem">
+			<p class="para">Lorem ipsum dolor.</p>
+		</li>
+		<li class="listItem">
+			<p class="para">Lorem ipsum dolor.</p>
+		</li>
+		<li class="listItem">
+			<p class="para">Lorem ipsum dolor.</p>
+		</li>
+	</ul>
+	<script type="text/javascript">
+		var Module1 = {
+			getByClass: function (x) {
+				return document.getElementsByClassName(x); // Доработать!
+			}
+		}
+		var z = Module1.getByClass("para");
+		alert(z);
+	</script>
+		<script type="text/javascript">
+		var Module2 = {
+			getByClass: function(x) {
+				var result = [];
+				var elems = document.getElementsByTagName("*");
+				for (var i = 0; i < elems.length; i++) {
+					if (elems[i].getAttribute("class") === x) {
+						result.push(elems[i]);
+					}
+				}
+				return result;
+			}
+		}
+		var z = Module2.getByClass("para");
+		alert(z);
+	</script>
+</body>
+</html>

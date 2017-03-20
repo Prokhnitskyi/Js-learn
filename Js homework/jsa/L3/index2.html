@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		window.onload = function () {
+			alert('Введите в url 2 параметра в формате "?a=1&b=2"');
+			var args = {};
+			var sum = 0; 
+			var params = window.location.search.slice(1); // забираем параметры и отрезаем первый символ.
+			var pairs = params.split("&");  // разделяем на массив по "&"
+
+			for (var i = 0; i < pairs.length; i++) { // перебираем массив
+				var position = pairs[i].indexOf("="); // indexOf возвращает "-1", если подстрока не найдена
+				if (position == -1) {
+					continue; // Начинаем заново, когда найдем "="
+				}
+				var argName = pairs[i].substring(0, position); // Вырезаем из строки от 0 индекса до "="
+				var argValue = pairs[i].substring(position + 1); // Идем от индекса символа "="+1 до конца
+				args[argName] = argValue; // записываем в объект как свойство
+
+			}
+			for (key in args) {       // Перебираем свойства
+			sum += Number(args[key]); // Избегаем конкатэнации и складываем все в "sum"
+			 };
+			document.write(sum); // Выводим в  документ
+
+		}
+	</script>
+	Введите в url 2 параметра в формате "?a=1&b=2"
+</body>
+</html>

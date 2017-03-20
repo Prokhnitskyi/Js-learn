@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var Document = {
+			header: undefined,
+			body: undefined,
+			footer: undefined,
+			data: undefined,
+			Application: {
+				header: undefined,
+				body: undefined,
+				footer: undefined,
+				data: undefined
+			},
+			editObj: function () {
+				Document.header = prompt("Введите свойство header");
+				Document.body = prompt("Введите свойство body");
+				Document.footer = prompt("Введите свойство footer");
+				Document.data = prompt("Введите свойство data");
+				Document.Application.header = prompt("Введите свойство header для приложения");
+				Document.Application.body = prompt("Введите свойство body для приложения");
+				Document.Application.footer = prompt("Введите свойство footer для приложения");
+				Document.Application.data = prompt("Введите свойство data для приложения");
+			},
+			showObj: function () {
+				document.write(Document.header + "<hr>");
+				document.write(Document.body + "<hr>");	
+				document.write(Document.footer + "<hr>");	
+				document.write(Document.data + "<hr>");	
+				document.write(Document.Application.header + "<hr>");	
+				document.write(Document.Application.body + "<hr>");	
+				document.write(Document.Application.footer + "<hr>");	
+				document.write(Document.Application.data + "<hr>");	
+			}
+
+		};
+		Document.editObj();
+		Document.showObj();
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Box (height, width, depth, material) {
+			this.height = height;
+			this.width = width;
+			this.depth = depth;
+			this.material = material;
+			this.volume = function () {
+				return this.height * this.width * this.depth;
+			};
+			this.equals = function (obj) {
+				if (this.material === obj.material) {
+					return "Материалы объектов одинаковы!";
+				}
+				return "Материалы объектов НЕ одинаковы!";
+			}
+		};
+		var boxA = new Box(10, 10, 10, "wood");
+		var boxB = new Box(15, 15, 15, "steel");
+		var boxC = new Box(18, 19, 20, "steel");
+		alert(boxA.volume());
+		alert(boxA.equals(boxB));
+		alert(boxB.equals(boxC));
+	</script>
+</body>
+</html>

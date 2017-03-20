@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.wrap input, .wrap p {
+			display: block;
+			width: 300px;
+			margin: 10px auto;
+			box-sizing: border-box;
+		}
+		#typehere {
+			margin-top: 200px;
+		}
+	</style>
+	<script>
+	window.onload = function () {
+		var submitBtn = document.getElementById('submitBtn'); // Находим кнопку "посчитать"
+
+		submitBtn.addEventListener("click", calculate, false); // добавляем эвент на клик
+
+		function calculate() { 
+		var t = document.getElementById("typehere").value; // получяем значение текстового инпута
+		if (t.indexOf("+") != -1) var result = +t.substring(0, t.indexOf("+")) + +t.substring(t.indexOf("+")+1); // Нарезаем, избегаем конкат. и сумируем.
+		if (t.indexOf("-") != -1) var result = +t.substring(0, t.indexOf("-")) - +t.substring(t.indexOf("-")+1); // аналогично, только отнимаем
+		// document.getElementById("answer").innerHTML = result;
+		var ans = document.getElementById("answer");
+		ans.innerHTML = result;
+		 }
+		}
+	</script>
+</head>
+<body>
+	<div class="wrap">	
+		<input type="text" id="typehere" name="t">
+		<input type="submit" id="submitBtn" value="Посчитать">
+		<p id="answer"></p>
+	</div>
+</body>
+</html>

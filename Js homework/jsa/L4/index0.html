@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 100px;
+			height: 100px;
+			float: left;
+			background-color: green;
+			margin: 20px 10px;
+		}
+		input {
+			display: block;
+			width: 200px;
+			padding: 5px;
+			clear: both;
+			margin: 0 auto;
+		}
+		section {
+			width: 600px;
+			margin: 200px auto;
+		}
+	</style>
+
+	<script>
+	window.onload = function () {
+		var divs = document.getElementsByTagName('div');
+		var switchBtn = document.getElementById('colorSwitcher');
+		var redOne = 0;
+
+		switchBtn.addEventListener("click", getRed, false);
+
+		function getRed() {
+			for (var i = 0; i < divs.length; i++) {
+				divs[i].style.backgroundColor = "green";
+			}
+			divs[redOne++ % divs.length].style.backgroundColor = "red";  //циклический перебор массива
+		}
+	}
+	</script>
+</head>
+<body>
+<section>
+	<div class="divBlock"></div>
+	<div class="divBlock"></div>
+	<div class="divBlock"></div>
+	<div class="divBlock"></div>
+	<div class="divBlock"></div>
+	<input id="colorSwitcher" type="button" value="Нажми меня!">
+</section>
+</body>
+</html>

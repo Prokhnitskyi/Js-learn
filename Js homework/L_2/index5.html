@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<style type="text/css">
+	* {
+		font-family: monospace;
+		font-size: 30px;
+		line-height: 30px;
+		font-weight: bolder;
+	}
+</style>	
+	<script>
+var i = 0, j = 0;
+// Желаемое количество строк
+var max = +prompt("Введите число");
+var space = "",
+    star = "";
+
+while (i < max) {
+    space = "";
+    star = "*";
+    for (j = 0; j < max - i; j++) {
+    	space += "&nbsp";
+    }
+    for (j = 0; j < 2 * i + 1; j++){
+     	star += "*";
+    }
+    document.write(space + star);
+	document.write("<br>");
+    i++;
+}
+	</script>
+</body>
+</html>
+
+
+

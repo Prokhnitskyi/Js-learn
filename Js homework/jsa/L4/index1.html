@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrapper {
+			margin: 300px auto;
+			width: 500px;
+			/*border: 1px solid black;*/
+		}
+		input, h1, p {
+			display: block;
+			margin: 10px auto;
+			text-align: center;
+			width: 400px;
+
+		}
+		p {
+			font-size: 2em;
+			font-family: Verdana, Arial;
+		}
+	</style>
+
+</head>
+<body>
+<section id="wrapper">
+	<h1>Угадай число от 1 до 100!</h1>
+	<input type="text" id="textfromUser">
+	<input type="button" id="checkBtn" value="Проверить!">
+	<p id="result">Тут будет результат!</p>
+</section>
+
+
+
+
+
+
+
+
+
+
+	<script>
+		window.onload = function() {
+		var btn = document.getElementById("checkBtn");
+		var res = document.getElementById("result");
+		var random = getRandomInt(0, 100); // получаем случайно число от 0 до 100
+		//alert("случайное число: " + random); // для проверки работы скрипта
+
+		btn.addEventListener("click", compare, false); // добавляем событие на клик
+		function compare() {
+			var uText = Number(document.getElementById("textfromUser").value);  // если объявить вне события - будет записывать пустое поле или потребуется перезагрузка страницы
+			if (isNaN(uText)) { // Проверяем ввел ли пользователь число, минимальная верификация
+				res.innerHTML = "Это не число!";
+				return;
+			}
+			switch(true) {
+				case uText === random : // Проверяем на победу
+				res.innerHTML = "Вы угадали!";
+				break;
+				case uText > random : 
+				res.innerHTML = "Загаданное значение меньше введенного вами";
+				break;
+				case uText < random : 
+				res.innerHTML = "Загаданное значение больше введенного вами";
+				break;
+			}
+		}
+
+		function getRandomInt(min, max) { // функция для возможной масштабируемости
+  			return Math.floor(Math.random() * (++max - min)) + min; // Инкримент для max- включительно
+  		}
+  	}
+	</script>
+</body>
+</html>

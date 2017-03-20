@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	var i = 0;
+	var arr = [];
+		while(true) {
+			var x = prompt("Задайте новый элемент массива");
+			if (x === null || isNaN(x)) break; // Прекращаем заполнение
+			arr[i] = +x; // Заполняем, делая числами
+			i++;
+		}
+		document.write("Массив arr = " + arr.join(", ") + "<hr>"); // Выводим в документ
+
+		max = arr[0]; // Начальное значение
+		for (var i = 0; i<arr.length;i++) { // перебираем массив
+			if (max < arr[i]) {   // Сравниваем элемент массива
+				max = arr[i];     // Перезаписываем, если arr[i] больше
+			}
+		}
+		document.write("Максимальное значение массива равно " + max + "<hr>"); // Выводим в документ
+
+		min = arr[0];
+		for (var i = 0; i<arr.length;i++) {
+			if (min > arr[i]) {
+				min = arr[i];
+			}
+		}
+		document.write("Минимальное значение массива равно " + min + "<hr>"); // Выводим в документ
+
+		var sum = 0;
+		for (var i = 0; i<arr.length;i++) {
+			sum += arr[i]
+		}
+		document.write("Сумма всех элементов равна " + sum + "<hr>"); // Выводим в документ
+
+		var aMean = sum/arr.length;
+		document.write("Среднее арифметическое равно " + aMean + "<hr>"); // Выводим в документ
+
+		var result = [];
+		for (var i = 0; i<arr.length;i++) {
+			if(arr[i] % 2 === 1) {
+				result.push(arr[i]);
+			}
+		}
+		document.write("Нечетные значения массива arr = " + result.join(", ") + "<hr>"); // Выводим в документ
+
+	</script>
+
+</body>
+</html>

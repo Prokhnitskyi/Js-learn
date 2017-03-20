@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+function Human(name, age) {
+	this.name = name;
+	this.age = age;
+	this.toString = function () {
+		return this.age;                // для представления объектов по свойству "age" по умолчанию.
+	}
+}
+
+var Genry = new Human("Genry", 19);
+var Fidel = new Human("Fidel", 21);
+var Alex = new Human("Alex", 17);
+var objArr = [Genry, Fidel, Alex];
+alert(objArr);                         // проверяем override для метода toSting()
+alert(objArr.sort(function (a, b) {   // Сортируем как числа, а не строки (Разберись как работает, тряпка!)
+  if (a > b) return 1;
+  if (a < b) return -1;
+}
+));
+for (var i = 0; i < objArr.length; i++) {
+	alert(objArr[i].name);           // Перебирает и показываем отсортированые объекты в массиве, по имени.
+};
+
+
+	</script>
+</body>
+</html>

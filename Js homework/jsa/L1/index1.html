@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	<script>
+		function Student(name, age) {
+			this.name = name;
+			this.age = age;
+			this.sayHi = function () {
+				document.body.innerHTML = "Привет!" + "&nbsp" + "Меня зовут " + name + "." + "&nbsp" + "Мне " + age + " лет.";
+			}
+		}
+		Student.race ="<hr>" + "Человек";
+		Student.learn = function () {
+			alert("Пора учиться!");
+		}
+
+		var Siroja = new Student ("Сергей", 20);
+		Siroja.sayHi();
+		document.write(Student.race);
+		Student.learn();
+	</script>
+</body>
+</html>

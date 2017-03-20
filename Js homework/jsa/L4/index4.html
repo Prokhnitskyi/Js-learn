@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#textbox {
+			position: absolute;
+			width: 200px;
+			left: 300px;
+			top: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="textbox">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt impedit unde, fugiat reiciendis esse fugit voluptatum! Totam facilis quis asperiores.</div>
+	<input type="button" value="вверх">
+	<input type="button" value="вниз">
+	<input type="button" value="влево">
+	<input type="button" value="вправо">
+
+
+
+
+
+	<script>
+		
+			var textDiv = document.getElementById("textbox");
+			var intputs = document.getElementsByTagName('input'); // Находим все инпуты на странице
+			intputs[0].addEventListener("click", up ,false); // вверх
+			intputs[1].addEventListener("click", down, false); // вниз
+			intputs[2].addEventListener("click", left, false); // лево
+			intputs[3].addEventListener("click", right, false); // право
+
+			function up() {
+				var computedStyle = getComputedStyle(textDiv); // получаем объект с ткущим состоянием left и top
+				var withoutPX = +computedStyle.top.substring(0, computedStyle.top.length - 2 ); // обрезаем "px"
+				var computedPosTop = withoutPX - 100; // высчитываем желаемый результат
+				var repeatAnimation = setInterval(animateTop, 1); // Запускаем функцию, которая меняет значение на 1px каждую милисекуну
+				function animateTop () {
+				if (withoutPX == computedPosTop) clearInterval(repeatAnimation); // Добились желаемого - завершить повторения 
+				textDiv.style.top = withoutPX  + "px";
+				withoutPX -= 1;
+				}
+			}
+
+				function down() {
+				var computedStyle = getComputedStyle(textDiv);
+				var withoutPX = +computedStyle.top.substring(0, computedStyle.top.length - 2 );
+				var computedPosDown = withoutPX + 100;
+				var repeatAnimation = setInterval(animateDown, 1);
+				function animateDown () {
+				if (withoutPX == computedPosDown) clearInterval(repeatAnimation);
+				textDiv.style.top = withoutPX  + "px";
+				withoutPX += 1;
+				}
+			}
+
+				function left() {
+				var computedStyle = getComputedStyle(textDiv);
+				var withoutPX = +computedStyle.left.substring(0, computedStyle.left.length - 2 );
+				var computedPosLeft = withoutPX - 100;
+				var x = setInterval(animateLeft, 1);
+				function animateLeft() {
+				if (withoutPX == computedPosLeft) clearInterval(x);
+				textDiv.style.left = withoutPX  + "px";
+				withoutPX -= 1;
+				}
+			}
+
+				function right() {
+				var computedStyle = getComputedStyle(textDiv);
+				var withoutPX = +computedStyle.left.substring(0, computedStyle.left.length - 2 );
+				var computedPosLeft = withoutPX + 100;
+				var x = setInterval(animateLeft, 1);
+				function animateLeft() {
+				if (withoutPX == computedPosLeft) clearInterval(x);
+				textDiv.style.left = withoutPX  + "px";
+				withoutPX += 1;
+				}
+			}
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+label {
+	cursor: pointer;
+	text-align: center;
+}
+form, input, label {
+	display: block;
+	margin: 20px auto;
+}
+form {
+	width: 150px;
+	margin: 300px auto;
+}
+input {
+	border: 1px solid black;
+}

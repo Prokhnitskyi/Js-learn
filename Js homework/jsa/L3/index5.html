@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#runningtext {
+			display: none;
+			background-color: #d1c8c8;
+			position: absolute;
+			padding: 5px;
+			border: 1px solid black;
+			top: 100px;
+		}
+	</style>
+</head>
+<script>
+	window.onload = function () {
+		var submitBtn = document.getElementById("submitBtn");
+		var textbox = document.getElementById("textbox");
+		var runningtext = document.getElementById("runningtext");
+		submitBtn.addEventListener("click", 
+			function () {
+				runningtext.innerHTML = textbox.value;
+				runningtext.style.display = "block";
+				var z = 0;
+				setInterval (function () {
+					if (z < innerWidth + 1) {
+					runningtext.style.left = z + "px";
+					z++;
+					} else { z = -400}
+					}
+				, 1);
+
+		},
+		false);
+	}
+</script>
+<body>
+	<input type="text" id="textbox">
+	<input type="submit" id="submitBtn">
+	<div id="runningtext"></div>
+</body>
+</html>

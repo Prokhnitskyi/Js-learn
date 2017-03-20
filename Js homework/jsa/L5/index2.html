@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#first {
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+<div id="first"></div>
+
+
+<script>
+	if (window.addEventListener) {
+		window.addEventListener("load", init, false);
+	} else if (window.attachEvent) {
+		window.attachEvent("onload", init);	
+		}
+function init() {
+	function addClickEv(element, id, handler) {
+		var element = document.getElementById(id);
+		if (element.addEventListener) element.addEventListener("click", handler, false);
+		if (element.attachEvent) element.attachEvent("onclick", handler);
+	}
+
+	function handler() {
+		this.style.backgroundColor = "red";
+		this.addEventListener("click", function () {
+			this.style.backgroundColor = "yellow";
+		}, true);
+	}
+
+	addClickEv("div1", "first", handler);
+
+
+
+}
+
+
+</script>
+
+</body>
+</html>

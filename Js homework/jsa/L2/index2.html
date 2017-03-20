@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		input {
+			display: block;
+			margin: 100px auto 50px auto;
+		}
+		p {
+			margin: 10px auto;
+			text-align: center;
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			var btn = document.getElementById("btn");
+			btn.onclick = function () {
+				if (document.getElementsByTagName("p").length < 10) {
+				var p = document.createElement("p");
+				p.innerHTML = document.getElementsByTagName("p").length + 1 + " random paragraph";
+				var d = document.getElementById("cont");
+				d.appendChild(p);
+			} else {
+				var d = document.getElementById("cont");
+				var p = document.getElementsByTagName("p");
+			  while (d.lastChild) {
+			    d.removeChild(d.lastChild);
+			  }
+			}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input id="btn" type="button" value="Я кнопка!">
+	<div id="cont"></div>
+</body>
+</html>

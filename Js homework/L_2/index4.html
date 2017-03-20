@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Lesson 1</title>
+<style type="text/css">
+	* {
+		font-family: monospace;
+		font-size: 30px;
+		line-height: 30px;
+		font-weight: bolder;
+	}
+</style>
+<script type="text/javascript">
+var h = +prompt("Введите высоту", "10");
+for (var i = 1; i <= h; i++) {
+	if (i == h) {
+		for (var j = 1; j <= i; j++) {
+			document.write("*");
+		}} else {
+			for (var j = 1; j <= i; j++) {
+				switch (j) {
+					case 1:
+					case i:
+						document.write("*");
+						break;
+					default:
+						document.write("&nbsp");
+						break
+				}
+			}
+		}
+	document.write("<br>");
+	}
+
+
+</script>	
+</head>
+<body>
+
+</body>
+</html>
+

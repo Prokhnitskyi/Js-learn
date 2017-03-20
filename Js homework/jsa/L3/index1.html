@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		p, input {
+			display: block;
+			margin: 10px auto;
+			width: 200px;
+			height: 50px;
+			font-size: 24px;
+		}
+		p {
+			text-align: center;
+			border: 1px solid black;
+			border-radius: 3px;
+			margin-top: 300px;
+			box-sizing: border-box; /*Паддинг не влияет на заданные размеры блока*/
+			padding-top: 8px; /*Выравниваем строку по вертикали*/
+		}
+	</style>
+
+
+	<script>
+	window.onload = function () { // Ждем загрузки документа (иначе будет искать еще не отрисованные элементы)
+		var Time = {      // Создаем объект, которые будет хранить часы, минуты, секунды
+			hours: 0,
+			minutes: 0,
+			seconds: 0,
+
+			formatNumber: function(x) { // Если значения свойства имеет только 1 символ - добавляем вначале 0, иначе - возвращаем исходное.
+				if (x.toString().length == 1) { //Без toString() - x.length всегда равно 0 (typeof(x) - numeber)
+					return "0" + x;
+				}
+				return x;
+			},
+			start: function() {  // Вывод в документ сделан отдельным методом, из-за "return" в методе addSecond
+				var addSecond = function() { // Если значения свойства < 0 - добавляем единицу и возвращаемся, свойсво 59 - обнуляем и идем к следующему.
+				if (Time.seconds <= 59) {          
+					if (Time.seconds == 59) {
+						Time.seconds = 0;
+					} else {
+						Time.seconds++;
+						return;
+					}
+				}
+				if (Time.minutes <= 59) {
+					if (Time.minutes == 59) {
+						Time.minutes = 0;
+					} else {
+						Time.minutes++;
+						return;
+					}
+				}
+				Time.hours++;
+				return;
+			}
+				addSecond();
+				var p = document.getElementById("time");
+				p.innerHTML = Time.formatNumber(Time.hours) + ":" + Time.formatNumber(Time.minutes) + ":" + Time.formatNumber(Time.seconds);
+			}
+		}
+		var g; // создаем глобально, для использования в кнопке "Стоп" и "Сброс" как Interval ID
+
+		var startButton = document.getElementById("startBtn");
+		startButton.onclick = function () { // Функция-обертка для запуска функции с параметром и отмены запуска по загрузке.
+			g = setInterval(Time.start, 1000);
+		}
+
+		var stopButton = document.getElementById("stopBtn");
+		stopButton.onclick =  function () {
+			clearInterval(g);
+		}
+
+		var resetButton = document.getElementById("resetBtn");
+		resetButton.onclick = function () { // Дублируем "Стоп"-кнопку, обнуляем свойства и выводим в документ простой строкой (так быстрее)
+			clearInterval(g);
+			Time.hours = 0;
+			Time.minutes = 0;
+			Time.seconds = 0;
+			var p = document.getElementById("time");
+			p.innerHTML = "00:00:00";
+		}
+		
+		}
+	</script>
+</head>
+<body>
+	<p id="time">00:00:00</p>
+	<input id="startBtn" type="button" value="Старт">
+	<input id="stopBtn" type="button" value="Стоп">
+	<input id="resetBtn" type="button" value="Сброс">
+
+	
+</body>
+</html>

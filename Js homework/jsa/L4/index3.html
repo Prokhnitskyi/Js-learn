@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	div {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+	}
+	#one {
+		background-color: red;
+		z-index: 1; 
+	}
+	#two {
+		background-color: green;
+		z-index: 2;
+	}
+	#three {
+		background-color: yellow;
+		z-index: 3;
+	}
+</style>
+</head>
+<body>
+	<div id="one"></div>
+	<div id="two"></div>
+	<div id="three"></div>
+
+
+<script>
+	window.onload = function () {
+		function getRandomInt(min, max) { // функция для возможной масштабируемости
+  		return Math.floor(Math.random() * (++max - min)) + min; // Инкримент для max- включительно
+  		}
+  		function moveToRandom() {
+		var divs = document.getElementsByTagName('div');
+		for(var i = 0; i < divs.length; i++) {
+			divs[i].style.left = getRandomInt(0, 1500) + "px";
+			divs[i].style.top = getRandomInt(0, 800) + "px";
+		}
+		}
+		setInterval(moveToRandom, 1000);
+
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			margin-top: 300px;
+		}
+		a {
+			display: block;
+			margin: 10px auto;
+			padding: 5px;
+			width: 250px;
+			border: 1px solid black;
+			border-radius: 3px;
+			text-align: center;
+
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			var a1 = document.getElementById("a1");
+			a1.addEventListener("click", go1, false);
+
+			var a2 = document.getElementById("a2");
+			a2.addEventListener("click", go2, false);
+
+			var a3 = document.getElementById("a3");
+			a3.addEventListener("click", go3, false);
+
+			function go1() {
+				var w1 = window.open("index1.html", "");
+				a1.innerHTML = "JS Урок 1 (уже открыт)";
+				a1.removeEventListener("click", go1, false);
+				a1.onclick = function () {
+				w1.close();
+				a1.innerHTML = "JS Урок 1";	
+				}
+			}
+
+			function go2() {
+				var w2 = window.open("index2.html", "");
+				a2.innerHTML = "JS Урок 2 (уже открыт)";
+				a2.removeEventListener("click", go2, false);
+				a1.onclick = function () {
+				w2.close();
+				a2.innerHTML = "JS Урок 2";	
+				}
+			}
+
+			function go3() {
+				var w3 = window.open("index3.html", "");
+				a3.innerHTML = "JS Урок 3 (уже открыт)";
+				a3.removeEventListener("click", go3, false);
+				a3.onclick = function () {
+				w3.close();
+				a3.innerHTML = "JS Урок 3";	
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<a href="#" id="a1">JS Урок 1</a>
+	<a href="#" id="a2">JS Урок 2</a>
+	<a href="#" id="a3">JS Урок 3</a>
+</body>
+</html>

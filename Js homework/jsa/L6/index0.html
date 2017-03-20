@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#squere {
+			width: 25px;
+			height: 25px;
+			background-color: green;
+			position: absolute;
+		}
+		body {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body id="main">
+	<div id="squere"></div>
+
+
+
+
+
+	<script>
+		var bd = document.getElementById("main");
+		var div = document.getElementById("squere");
+		var currentPosTop = 0;
+		var currentPosLeft = 0;
+		bd.addEventListener("keydown",	function move(e) {
+			if (e.keyCode == 40) { // Вниз
+				currentPosTop += 10;
+				div.style.top = currentPosTop + "px";
+			}
+			if (e.keyCode == 38) { // Вверх
+				currentPosTop -= 10;
+				div.style.top = currentPosTop + "px";
+			}
+				if (e.keyCode == 39) { // Вправо
+				currentPosLeft += 10;
+				div.style.left = currentPosLeft + "px";
+			}
+			if (e.keyCode == 37) { // Влево
+				currentPosLeft -= 10;
+				div.style.left = currentPosLeft + "px";
+			}
+		}, false);
+
+	</script>
+</body>
+</html>

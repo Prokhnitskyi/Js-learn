@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css2.css">
+</head>
+<body>
+	<form action="/" method="get">
+		<input id="login" type="text" placeholder="Логин">
+		<input id="password" type="text" placeholder="Пароль">
+		<input id="btn" type="submit" value="Вход">
+		<input type="checkbox" id="rememnerMe" checked> <label for="rememnerMe">Запомнить меня</label>
+	</form>
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+		window.onload = function () {
+		var ans = document.createElement("div");
+		var login = document.getElementById('login');
+		var password = document.getElementById("password");
+		var submit = document.getElementById("btn");
+
+		btn.addEventListener("click", checkForm, false);
+		function checkForm() {
+				login.style.backgroundColor = "";
+				password.style.backgroundColor = "";
+			if (login.value === "" || password.value === "") {
+				ans.innerHTML = "Вы не заполнили поля логин и пароль";
+				login.style.backgroundColor = "red";
+				password.style.backgroundColor = "red";
+				login.parentNode.insertBefore(ans, login);
+				return;
+			}
+				if (login.value === "admin" || password.value === "12345") {
+				ans.innerHTML = "Вы авторизированы";
+				ans.style.color = "green";
+				login.parentNode.insertBefore(ans, login);
+			}
+
+		}
+		}
+	</script>
+</body>
+</html>
