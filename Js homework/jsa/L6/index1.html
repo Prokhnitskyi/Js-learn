@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
-		input, button {
+		textarea, button {
 			display: block;
 			margin: 50px auto;
 			width: 300px;
@@ -13,24 +13,29 @@
 
 
 </head>
-<p>Lorem ipsum dolor sit amet. </p>
 <body>
-	<input type="text">
+	<textarea></textarea>
 	<button>Save</button>
 
 
 
 		<script>
-		var tArea = document.getElementsByTagName('input')[0];
+		var tArea = document.getElementsByTagName('textarea')[0];
 		var btn = document.getElementsByTagName('button')[0];
+		var flag = false;
+		btn.addEventListener("click", function () {
+			flag = true;
+		})
+		window.onbeforeunload = exit;
 
-		if (tArea.value) {
-			window.onbeforeunload = exit;
-		}
 		function exit() {
-				return "Are u sure?";
+					if (!!tArea.value && !flag) {
+			return "Are u sure?";
+		}
+				
 			}
-// WAZZAP
+			
+
 
 		</script>
 </body>
