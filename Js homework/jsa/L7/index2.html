@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<form action="/" method="GET">
+	<input type="text" data-watermark="Ваш логин">
+	<input type="text" data-watermark="Ваше имя">
+	<input type="text" data-watermark="Ваша фамилия">
+	<input type="text" data-watermark="Ваше отчество">
+</form>
+
+
+
+
+
+	<script>
+		window.addEventListener('load', init, false);
+		function init(e) {
+			var form = document.forms[0];
+			var elements = form.elements;
+			var ln = elements.length;
+			for (var i = 0; i < ln; i++) {
+				elements[i].value = elements[i].dataset.watermark;
+				elements[i].addEventListener('focus', goEmpty, false);
+				elements[i].addEventListener('blur', goBack, false);
+
+			}
+			function goEmpty(e) {
+				if (e.target.value == e.target.dataset.watermark) e.target.value = "";
+			}
+			function goBack(e) {
+				if (e.target.value == "") e.target.value = e.target.dataset.watermark;
+			}
+
+			}
+	</script>
+</body>
+</html>

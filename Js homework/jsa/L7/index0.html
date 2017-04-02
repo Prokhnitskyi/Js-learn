@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		form {
+			display: block;
+			margin: 0 auto;
+			width: 300px;
+			line-height: 36px;
+		}
+	</style>
+</head>
+<body>
+	<form action="#" method="POST" name="loginForm">
+		<input type="text" name="firstName" placeholder="Имя"><br>
+		<input type="text" name="lastName" placeholder="Фамилия"><br>
+		<input type="text" name="login" placeholder="Логин"><br>
+		<input type="password" name="password" placeholder="Пароль"> <br>
+		<input type="password" name="confirmPassword" placeholder="Подтверждение пароля"><br>
+		<input type="text" name="email" placeholder="Электронная почта"><br>
+		<label><input type="radio" name="gender" value="male" checked>Мужчина</label><br>
+		<label><input type="radio" name="gender" value="female">Женщина</label><br>
+		<input type="submit" name="submit">
+		<div id="errorbox"></div>
+	</form>
+
+
+
+
+
+
+
+
+
+
+	<script>
+		window.addEventListener('load', function () {
+
+ 			var submitBtn = document.forms.loginForm.submit,
+ 				errBox = document.getElementById('errorbox'),
+ 				patternEmail = /\b[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,4}\b/i;
+
+
+ 			submitBtn.addEventListener('click', validate, false);
+
+
+ 			function validate(e) {
+ 				
+ 				errBox.innerHTML = ""; // Удаляем старые сообщения, на случай повторной ошибки у пользователя
+
+ 				checkForEmpty(e); //  Проверяем на наличие пустых полей
+
+ 				checkPassword(e); // Сверяем пароль
+
+ 				checkEmail(e); // Сверяем email
+
+
+ 			}
+
+
+ 			function checkForEmpty(event) {
+ 				var inputs = document.getElementsByTagName('input');
+ 				for(var i = 0, ln = inputs.length; i < ln; i++) { // ln - для однократного определения, длина массива не меняется
+					if(inputs[i].type != "text" && inputs[i].type != "password") continue; // Если импут не требует ввода строки - пропускаем
+					if (inputs[i].value == "") { // Если поле пустое
+						errorMsg(inputs[i]); //  Выдаем ошибку на элемент с пустым полем
+						event.preventDefault(); // Отменяем отправку данных с формы
+					}
+ 				}
+ 			};
+
+ 			function errorMsg(element) {
+ 				var errorDiv = document.createElement('div'); // Создаем контейнер для текста
+ 				errorDiv.innerHTML = "Заполните поле " + '"' + element.placeholder + '"'; // Формируем сообщение из плэйсхолдера переданного в функцию элемента
+ 				errorDiv.style.color = "red"; // стилизуем
+ 				errBox.appendChild(errorDiv); // добавляем в блок с ошибками
+ 			};
+
+ 			function checkPassword(event) {
+ 				 if(document.forms.loginForm.password.value != document.forms.loginForm.confirmPassword.value) { // Сверяем значения
+ 					var errorDiv = document.createElement('div');
+ 					errorDiv.innerHTML = "Пароли не совпадают";
+ 					errorDiv.style.color = "red";
+ 					errBox.appendChild(errorDiv);
+ 					event.preventDefault();
+ 				}
+ 				
+ 			};
+
+ 			function checkEmail(event) {
+ 				if (!patternEmail.test(document.forms.loginForm.email.value)) {
+ 					var errorDiv = document.createElement('div');
+ 					errorDiv.innerHTML = "Неверный формат электронной почты";
+ 					errorDiv.style.color = "red";
+ 					errBox.appendChild(errorDiv);
+ 					event.preventDefault();
+ 				}
+ 			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		})
+	</script>
+</body>
+</html>

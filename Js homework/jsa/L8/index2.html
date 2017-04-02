@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<form action="/" method="GET">
+	<select name="bodyColor">
+		<option value="red">red</option>
+		<option value="yellow">yellow</option>
+		<option value="blue">blue</option>
+		<option value="green">green</option>
+		<option value="grey">grey</option>
+	</select>
+	<input type="text" name="fontSize" placeholder="Размер шрифта" value="16">
+	<input type="submit">
+</form>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora aut, dolorum beatae quia temporibus voluptatem tenetur asperiores eligendi! Enim saepe nesciunt odio magni explicabo reprehenderit veritatis suscipit ipsum cum nam eveniet mollitia ab quia molestiae commodi itaque odit quae, praesentium eaque facilis magnam! Aliquam id, fugiat eveniet quibusdam quo blanditiis, ducimus sequi neque consequuntur amet magnam! Distinctio non, qui omnis porro facere animi nemo quaerat, voluptatibus error mollitia reprehenderit quia dolorem minima, nihil delectus! Pariatur aliquam ipsa, necessitatibus ut numquam ullam voluptatem beatae modi harum? Quia, delectus. Quae nemo labore rerum ut. Inventore, amet voluptate? Nisi adipisci explicabo beatae praesentium alias a totam eligendi nam recusandae placeat incidunt, repellat neque, suscipit iure cumque doloremque quo architecto repellendus cupiditate corporis labore! Animi repellendus, cupiditate reiciendis exercitationem amet modi adipisci ipsam id molestiae beatae, asperiores eveniet nihil fuga similique magni suscipit, perferendis voluptatem incidunt eaque delectus unde, laborum! Recusandae ullam culpa dolor.</p>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+	window.addEventListener('load', init);
+	function init() {
+		var form = document.forms[0];
+		var submit = form.elements[2];
+
+
+
+	function getNewStyle() {
+		var bodyColor = form.bodyColor.value;
+		var fontSize = form.fontSize.value;
+		document.body.style.backgroundColor = bodyColor;
+		document.body.style.fontSize = fontSize + "px";
+		window.localStorage.setItem('bgColor', bodyColor);
+		window.localStorage.setItem('fontSize', fontSize);
+	}
+
+	submit.addEventListener('click', getNewStyle, false);
+	document.body.style.backgroundColor = window.localStorage.getItem('bgColor');
+	document.body.style.fontSize = window.localStorage.getItem('fontSize') + "px";
+	}
+
+
+</script>
+
+
+
+</body>
+</html

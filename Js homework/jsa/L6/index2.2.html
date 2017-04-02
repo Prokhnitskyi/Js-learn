@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<script>
+	window.onload = function () {
+		var inputs = document.getElementsByTagName('input');
+		var ln = inputs.length;
+		window.addEventListener('keydown', function (e) {
+
+			switch(true) {
+
+			case e.keyCode == 82:
+				for(var i = 0; i < ln;i++) {
+					inputs[i].style.color = "red";
+				};
+				break;
+
+			case e.keyCode == 71:
+				for(var i = 0; i < ln;i++) {
+					inputs[i].style.color = "green";
+				};
+				break;
+
+			case e.keyCode == 66:
+				for(var i = 0; i < ln;i++) {
+					inputs[i].style.color = "blue";
+				};
+				break;
+		}
+		}, true);
+}
+	</script>
+</head>
+<body>
+		<input type="text">
+		<input type="text">
+		<input type="text">
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="currentTime"></div>
+
+
+
+
+
+<script>
+	window.onbeforeunload = function () {
+	var time = new Date();
+	document.cookie = "lastVisit: " + time + "; " + "max-age" + 2592000000 + "; ";	
+	}
+
+</script>
+</body>
+</html>

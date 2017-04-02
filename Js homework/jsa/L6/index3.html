@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="Получить скидку">
+
+	<script>
+window.addEventListener('load', function () {
+var btn = document.getElementsByTagName('input')[0];
+
+
+	btn.onmousemove = function (e) {
+
+		var cX = e.clientX;
+		var cY = e.clientY;
+		btn.style.position = "absolute";
+        btn.style.left = cX + 20 + 'px';
+        btn.style.top = cY + 20 + 'px';
+
+	}
+
+}, false);
+	</script>
+</body>
+</html>

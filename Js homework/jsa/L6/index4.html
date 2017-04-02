@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		window.onload = function () {
+			window.addEventListener('keydown', function (e) {
+				if (e.ctrlKey == true && e.keyCode == 65) alert("Выбрано все");
+				if (e.ctrlKey == true && e.shiftKey == true && e.keyCode == 83) alert("Сохранено все");
+				if (e.ctrlKey == true && e.keyCode == 83) alert("Сохранено");
+				e.preventDefault();
+			}, true);
+		}
+
+	</script>
+</body>
+</html>

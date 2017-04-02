@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img {
+			width: 5em;
+		}
+	</style>
+</head>
+<body>
+<form name="myForm" action="/" method="GET">
+	<label><img src="small.png" alt="">Маленькая<input type="radio" name="size" value="50"></label>
+	<label><img src="big.png" alt="">Большая<input type="radio" name="size" value="100"></label>
+	<label><img src="medium.gif" alt="">Средняя<input type="radio" name="size" value="75"></label>
+	<hr>
+	<label>Грибы<input type="checkbox" name="addition" value="10"></label><br>
+	<label>Бекон<input type="checkbox" name="addition" value="11"></label><br>
+	<label>Помидоры<input type="checkbox" name="addition" value="12"></label><br>
+	<label>Сыр<input type="checkbox" name="addition" value="13"></label><br>
+	<label>Оливки<input type="checkbox" name="addition" value="14"></label><br>
+	<hr>
+	<label>Телефон <input type="text" placeholder="номер телефона"></label>
+	<label>Улица <input type="text" placeholder="название улицы"></label>
+	<label>Дом <input type="text" placeholder="номер дома"></label>
+	<hr>
+	<div id="summary">0 грн</div>
+	<hr>
+	<input type="submit" id="sbtBtn">
+</form>
+	<div id="errorbox"></div>
+
+<script>
+	var form = document.myForm,
+	    size = form.size,
+	    ads = form.addition,
+	    summaryDiv = document.getElementById('summary'),
+	    submitBtn = document.getElementById('sbtBtn'),
+	    inputs = document.getElementsByTagName('input'),
+	    errBox = document.getElementById('errorbox');
+
+	form.addEventListener('change', getFullPrice, false);
+	submitBtn.addEventListener('click', checkForEmpty, false);
+
+	function getPizzaValue() {
+		for (var i = 0, ln = size.length; i < ln; i++) {
+			if (size[i].checked == true) return Number(size[i].value);
+		}
+		return 0; // Избегаем NaN, если размер пиццы еще не выбрали.
+	};
+
+	function getAdditionsValue() {
+		var adsResult = 0;
+		for (var i = 0, ln = ads.length; i < ln; i++) {
+			if (ads[i].checked == true) {
+				adsResult += Number(ads[i].value);
+			}
+		}
+		return adsResult;
+	};
+
+	function getFullPrice() {
+		var sum = 0;
+		var price = document.createElement('span');
+		sum = getPizzaValue() + getAdditionsValue() + " грн";
+		price.innerHTML = sum;
+		summaryDiv.innerHTML = "";
+		summaryDiv.insertBefore(price, summaryDiv.firstChild);
+	};
+
+	function checkForEmpty(event) {
+		errBox.innerHTML = "";
+		var flag = false;
+		for (var i = 0, ln = size.length; i < ln; i++) {
+			if (size[i].checked == true) flag = true;
+		}
+		if (!flag) {
+			errBox.innerHTML = "Вы не выбрали пиццу";
+			event.preventDefault(); // Отменяем отправку данных с формы
+		}
+		for (var i = 0, ln = inputs.length; i < ln; i++) { // ln - для однократного определения, длина массива не меняется
+			if (inputs[i].type != "text") continue; // Если импут не требует ввода строки - пропускаем
+			if (inputs[i].value == "") { // Если поле пустое
+				errorMsg(inputs[i]); //  Выдаем ошибку на элемент с пустым полем
+				event.preventDefault(); // Отменяем отправку данных с формы
+			}
+		}
+	};
+
+	function errorMsg(element) {
+		var errorDiv = document.createElement('div'); // Создаем контейнер для текста
+		errorDiv.innerHTML = "Заполните поле " + '"' + element.placeholder + '"'; // Формируем сообщение из плэйсхолдера переданного в функцию элемента
+		errorDiv.style.color = "red"; // стилизуем
+		errBox.appendChild(errorDiv); // добавляем в блок с ошибками
+	};
+
+</script>
+</body>
+</html>

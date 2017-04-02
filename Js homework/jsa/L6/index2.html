@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio molestiae nemo, tempore nesciunt repudiandae id quaerat natus neque aperiam deleniti nisi excepturi delectus adipisci sint a perferendis asperiores rem eligendi. Minima autem fugiat veritatis, nemo, eum pariatur voluptatibus blanditiis nulla. Ex repudiandae, saepe at error quibusdam veritatis consequuntur aspernatur asperiores. </p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio molestiae nemo, tempore nesciunt repudiandae id quaerat natus neque aperiam deleniti nisi excepturi delectus adipisci sint a perferendis asperiores rem eligendi. Minima autem fugiat veritatis, nemo, eum pariatur voluptatibus blanditiis nulla. Ex repudiandae, saepe at error quibusdam veritatis consequuntur aspernatur asperiores. </p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio molestiae nemo, tempore nesciunt repudiandae id quaerat natus neque aperiam deleniti nisi excepturi delectus adipisci sint a perferendis asperiores rem eligendi. Minima autem fugiat veritatis, nemo, eum pariatur voluptatibus blanditiis nulla. Ex repudiandae, saepe at error quibusdam veritatis consequuntur aspernatur asperiores. </p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio molestiae nemo, tempore nesciunt repudiandae id quaerat natus neque aperiam deleniti nisi excepturi delectus adipisci sint a perferendis asperiores rem eligendi. Minima autem fugiat veritatis, nemo, eum pariatur voluptatibus blanditiis nulla. Ex repudiandae, saepe at error quibusdam veritatis consequuntur aspernatur asperiores. </p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio molestiae nemo, tempore nesciunt repudiandae id quaerat natus neque aperiam deleniti nisi excepturi delectus adipisci sint a perferendis asperiores rem eligendi. Minima autem fugiat veritatis, nemo, eum pariatur voluptatibus blanditiis nulla. Ex repudiandae, saepe at error quibusdam veritatis consequuntur aspernatur asperiores. </p>
+	<input type="button" value="r">
+	<input type="button" value="g">
+	<input type="button" value="b">
+	
+	<script>
+		var btn1 = document.getElementsByTagName('input')[0],
+			btn2 = document.getElementsByTagName('input')[1],
+			btn3 = document.getElementsByTagName('input')[2];
+		var p = document.getElementsByTagName('p');
+
+		btn1.addEventListener('click', function () {
+			for(var i = 0, ln = p.length; i < ln; i++) {
+				p[i].style.color = "red";
+			};
+		}, false);
+
+		btn2.addEventListener('click', function () {
+			for(var i = 0, ln = p.length; i < ln; i++) {
+				p[i].style.color = "green";
+			};
+		}, false);
+
+		btn3.addEventListener('click', function () {
+			for(var i = 0, ln = p.length; i < ln; i++) {
+				p[i].style.color = "blue";
+			};
+		}, false);
+
+	</script>
+
+</body>
+</html>
