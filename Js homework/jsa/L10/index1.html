@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload = function () {
+			var sbtBtn = document.forms[0].elements[2];
+			sbtBtn.addEventListener('click', handler, false);
+
+			function handler() {
+				var a =parseFloat(document.forms[0].elements[0].value),
+					b = parseFloat(document.forms[0].elements[1].value),
+					xhr = new XMLHttpRequest();
+				xhr.open('POST', "CalcHandler.ashx");
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById("output").innerHTML = "POST " + xhr.responseText;
+                    }
+                }
+                xhr.send('a=' + a + '&b=' + b);				
+
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<form action="/">
+		<input type="text" placeholder="a" pattern="\d" title="Только целочисленные значения!">
+		<input type="text" placeholder="b" pattern="\d" title="Только целочисленные значения!">
+		<input type="submit">
+	</form>
+	<div id="output"></div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<!-- Квадрат -->
+<?xml version="1.0"?>
+<svg width="120" height="120"
+     viewBox="0 0 120 120"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <rect x="10" y="10" width="100" height="100"/>
+</svg>
+<!-- Круг -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="200">
+        <circle cx="250" 
+            cy="100" 
+            r="40" 
+            stroke="black"
+            stroke-width="2" fill="red" />
+    </svg>
+
+<!--эллипс-->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="200">
+        <ellipse cx="250" 
+            cy="100" 
+            rx="100" 
+            ry="50"
+            style="fill: yellow; stroke: purple; stroke-width: 2" />
+    </svg>
+
+
+<script>
+	var svg1 = document.getElementsByTagName('svg')[0];
+	var rect = document.getElementsByTagName('rect')[0];
+	svg1.onclick = function () {
+		svg1.setAttribute('width', '240');
+		svg1.setAttribute('height', '240');
+		rect.setAttribute('width', '200');
+		rect.setAttribute('height', '200');
+	}
+
+	var svg2 = document.getElementsByTagName('svg')[1];
+	var circle = document.getElementsByTagName('circle')[0];
+	svg2.onclick = function () {
+		circle.setAttribute('r', '80');
+	}
+	var svg3 = document.getElementsByTagName('svg')[2];
+	var ellipse = document.getElementsByTagName('ellipse')[0];
+	svg3.onclick = function () {
+		ellipse.setAttribute('rx', '150');
+		ellipse.setAttribute('ry', '75');
+	}
+</script>
+</body>
+</html>
